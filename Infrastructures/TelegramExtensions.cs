@@ -17,7 +17,7 @@ namespace Sam.CarsTelegramBot.Services.Infrastructures
             using var cts = new CancellationTokenSource();
             var receiverOptions = new ReceiverOptions
             {
-                AllowedUpdates = [] // دریافت همه‌ی آپدیت‌ها
+                AllowedUpdates = []
             };
 
             _bot.StartReceiving(
