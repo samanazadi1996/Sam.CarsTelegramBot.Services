@@ -40,7 +40,7 @@ namespace Sam.CarsTelegramBot.Services.Services
         public static string Cars(string name)
         {
             var model = Data.TryGetData()
-                .Where(p => p.name.Contains(name, StringComparison.OrdinalIgnoreCase));
+                .Where(p => p.moshakhasat.Contains(name, StringComparison.OrdinalIgnoreCase));
 
             if (!model.Any())
             {
@@ -54,10 +54,7 @@ namespace Sam.CarsTelegramBot.Services.Services
 " + string.Join(Environment.NewLine + Environment.NewLine, model.Select(p => @$"
 🛻 {p.name}
 📋 مشخصات: {p.moshakhasat}
-💰 قیمت کارخانه: {p.karkhane:N0} تومان
-💸 قیمت بازار: {p.bazar:N0} تومان
-
-برای اطلاعات بیشتر یا سوالات دیگه می‌تونید با ما تماس بگیرید."));
+💸 قیمت بازار: {p.bazar:N0} تومان"));
 
             message += "\r\n\nاگر ماشین دیگه‌ای می‌خواهید بررسی کنید، فقط نام اون رو وارد کنید یا از دستور /cars برای دیدن لیست ماشین‌ها استفاده کنید.";
 
