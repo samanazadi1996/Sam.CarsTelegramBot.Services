@@ -1,10 +1,13 @@
-using Sam.CarsTelegramBot.Services.Infrastructures;
 using Sam.CarsTelegramBot.Services.Jobs;
+using Sam.CarsTelegramBot.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddHostedService<BackgroundJobService>();
+builder.Configuration.ConfigureTelegramBot();
+
 builder.Services.RegisterTelegramBot(builder.Configuration);
+
+builder.Services.AddHostedService<BackgroundJobService>();
 
 var app = builder.Build();
 
