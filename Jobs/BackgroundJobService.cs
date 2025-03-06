@@ -17,7 +17,7 @@ public class BackgroundJobService : BackgroundService
             {
                 Data.RefreshData();
             }
-            if (now.Hour == 10)
+            else if (now.Hour == 10)
             {
                 var welcomeMessage = ChanelMessageService.WellCome();
                 var carsMessage = ChanelMessageService.Cars();

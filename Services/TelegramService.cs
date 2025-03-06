@@ -23,7 +23,7 @@ public static class TelegramService
             AllowedUpdates = []
         };
 
-        _bot.StartReceiving(
+        _bot?.StartReceiving(
             updateHandler: HandleUpdateAsync,
             errorHandler: HandleErrorAsync,
             receiverOptions: receiverOptions,
@@ -36,7 +36,7 @@ public static class TelegramService
 
     private static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
     {
-        if (update.Type == UpdateType.Message && update.Message is not null && update.Message.Type == MessageType.Text && !string.IsNullOrEmpty(update.Message.Text))
+        if (update is { Type: UpdateType.Message, Message.Type: MessageType.Text } && !string.IsNullOrEmpty(update.Message.Text))
         {
             Console.WriteLine($"[{update.Message.Chat.FirstName}]: {update.Message.Text}");
 
@@ -56,7 +56,7 @@ public static class TelegramService
 
 
         }
-        else if (update.Type == UpdateType.CallbackQuery && update.CallbackQuery is not null && !string.IsNullOrEmpty(update.CallbackQuery.Data))
+        else if (update is { Type: UpdateType.CallbackQuery, CallbackQuery: not null } && !string.IsNullOrEmpty(update.CallbackQuery.Data))
         {
             await botClient.SendTextMessageAsync(update.CallbackQuery.From.Id, MessageService.Cars(update.CallbackQuery.Data), cancellationToken: cancellationToken);
         }

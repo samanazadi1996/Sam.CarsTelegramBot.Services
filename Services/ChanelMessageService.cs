@@ -7,9 +7,9 @@ public class ChanelMessageService
 {
     public static string WellCome()
     {
-        PersianCalendar pc = new PersianCalendar();
-        DateTime now = DateTime.Now;
-        string today = $"{pc.GetYear(now)}/{pc.GetMonth(now):00}/{pc.GetDayOfMonth(now):00}";
+        var pc = new PersianCalendar();
+        var now = DateTime.Now;
+        var today = $"{pc.GetYear(now)}/{pc.GetMonth(now):00}/{pc.GetDayOfMonth(now):00}";
 
         return $"🚗✨ سلام دوستان عزیز! روز بخیر 🌞 امروز {today}، قیمت به‌روز خودروها رو با شما در کانال به اشتراک می‌ذاریم. همراه ما باشید! 📢📊";
     }

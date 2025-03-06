@@ -7,7 +7,7 @@ public class Data
 
     public static List<Car> TryGetData()
     {
-        if (cars is null || !cars.Any())
+        if (!cars.Any())
             RefreshData();
 
         return cars;
